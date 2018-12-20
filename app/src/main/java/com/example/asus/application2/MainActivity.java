@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout principale;
 
     EditText prodottoET;
+    TextView prodotto;
 
     Button prodottoBTN;
 
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         principale=findViewById(R.id.principale);
+
+        prodotto=findViewById(R.id.bicicletta_tv);
 
         prodottoET=findViewById(R.id.prodotto_et);
 
@@ -75,7 +79,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        String productName = "";
+        if(v.getId() == R.id.prodotto_btn){
+           productName = prodotto.getText().toString();
+        }
         Intent i=new Intent(this,ProductActivity.class);
+        i.putExtra("prodotto",productName);
         startActivity(i);
+
     }
+
+
+
 }
